@@ -11,7 +11,8 @@ find_package(benchmark REQUIRED)
 # Add executable for the benchmark
 add_executable(loop_unrolling_benchmark benchmarks/loop_unrolling_benchmark.cpp
         src/loops.h
-        src/loops.cpp)
+        src/loops.cpp
+        benchmarks/memory_alignment_benchmark.cpp)
 
 # Link Google Benchmark to the executable
 target_link_libraries(loop_unrolling_benchmark benchmark::benchmark)

@@ -6,7 +6,7 @@
 
 #include "../src/loops.h"
 
-// Function to sum numbers from 1 to n with loop unrolling
+// Sum numbers from 1 to n with loop unrolling
 static void SumWithUnrolling(benchmark::State &state) {
     int64_t n = state.range(0);
     int64_t res = 0;
@@ -16,7 +16,7 @@ static void SumWithUnrolling(benchmark::State &state) {
     benchmark::DoNotOptimize(res);
 }
 
-// Function to sum numbers from 1 to n with loop unrolling
+// Sum numbers from 1 to n with loop unrolling
 static void SumWithoutUnrolling(benchmark::State &state) {
     int64_t n = state.range(0);
     int64_t res = 0;
