@@ -13,7 +13,8 @@ add_executable(loop_unrolling_benchmark benchmarks/loop_unrolling_benchmark.cpp
         src/loops.h
         src/loops.cpp
         benchmarks/memory_alignment_benchmark.cpp
-        benchmarks/const_expr_benchmark.cpp)
+        benchmarks/const_expr_benchmark.cpp
+        benchmarks/l2_cache_optimizations_benchmark.cpp)
 
 # Link Google Benchmark to the executable
 target_link_libraries(loop_unrolling_benchmark benchmark::benchmark)
