@@ -3,28 +3,25 @@
 //
 
 #include <benchmark/benchmark.h>
-//#include <benchmark
+
+#include "../src/loops.h"
 
 // Function to sum numbers from 1 to n with loop unrolling
-static void SumWithUnrolling(benchmark::State& state) {
-    int n = state.range(0);
-    int res = 0;
-    for (auto _ : state) {
-        for (int i = 0; i < n; i += 4) {
-            res += i + (i + 1) + (i + 2) + (i + 3);
-        }
+static void SumWithUnrolling(benchmark::State &state) {
+    int64_t n = state.range(0);
+    int64_t res = 0;
+    for (auto _: state) {
+        res = loops::SumWithLoopUnrolling(n);
     }
     benchmark::DoNotOptimize(res);
 }
 
 // Function to sum numbers from 1 to n with loop unrolling
-static void SumWithoutUnrolling(benchmark::State& state) {
-    int n = state.range(0);
-    int res = 0;
-    for (auto _ : state) {
-        for (int i = 0; i < n; ++i) {
-            res += i;
-        }
+static void SumWithoutUnrolling(benchmark::State &state) {
+    int64_t n = state.range(0);
+    int64_t res = 0;
+    for (auto _: state) {
+        res = loops::SumWithoutLoopUnrolling(n);
     }
     benchmark::DoNotOptimize(res);
 }

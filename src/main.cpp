@@ -3,12 +3,11 @@
 #include "loops.h"
 
 
-
 int main() {
-    int n = 10000; // Change n to desired value
+    int64_t n = 10000; // Change n to a desired value
 
-    int sum =  loops::SumWithLoopUnrolling(n);
-    std::cout << "Sum without loop unrolling: " << sum << std::endl;
+    int64_t sum =  loops::SumWithLoopUnrolling(n);
+    std::cout << "Sum with loop unrolling: " << sum << std::endl;
 
     sum =  loops::SumWithoutLoopUnrolling(n);
     std::cout << "Sum without loop unrolling: " << sum << std::endl;

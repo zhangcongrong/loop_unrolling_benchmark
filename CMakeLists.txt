@@ -8,15 +8,15 @@ include_directories(/usr/local/include)
 # Find Google Benchmark package
 find_package(benchmark REQUIRED)
 
-
 # Add executable for the benchmark
-add_executable(loop_unrolling_benchmark1 benchmarks/loop_unrolling_benchmark.cpp)
-
+add_executable(loop_unrolling_benchmark benchmarks/loop_unrolling_benchmark.cpp
+        src/loops.h
+        src/loops.cpp)
 
 # Link Google Benchmark to the executable
-target_link_libraries(loop_unrolling_benchmark1 benchmark::benchmark)
+target_link_libraries(loop_unrolling_benchmark benchmark::benchmark)
 
-
-add_executable(loop_unrolling_benchmark src/main.cpp
+# Add executable for the app
+add_executable(app src/main.cpp
         src/loops.h
         src/loops.cpp)

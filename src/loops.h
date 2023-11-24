@@ -8,10 +8,10 @@
 namespace loops {
 
     // Function to sum numbers from 1 to n with loop unrolling
-    int SumWithLoopUnrolling(int n);
+    int64_t SumWithLoopUnrolling(int64_t n);
 
     // Function to sum numbers from 1 to n without loop unrolling
-    int SumWithoutLoopUnrolling(int n);
+    int64_t SumWithoutLoopUnrolling(int64_t n);
 
 }  // namespace loops
 
