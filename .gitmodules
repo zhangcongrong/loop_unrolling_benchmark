@@ -1,3 +1,1 @@
-[submodule "third_party/benchmark"]
-	path = third_party/benchmark
-	url = git@github.com:google/benchmark.git
+
