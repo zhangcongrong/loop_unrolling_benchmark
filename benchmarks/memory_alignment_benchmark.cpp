@@ -3,7 +3,6 @@
 //
 #include <benchmark/benchmark.h>
 #include <vector>
-#include <iostream>
 
 struct alignas(64) IntDoubleAlignedData {
     int x;
@@ -25,10 +24,11 @@ struct IntCharUnalignedData {
     char y;
 };  // sizeof(IntCharUnalignedData) = 8
 
-static void MemoryAlignedOfIntDoubleData(benchmark::State& state) {
-    for (auto _ : state) {
-        std::vector<IntDoubleAlignedData> data(state.range(0));
-        for (auto& d : data) {
+static void MemoryAlignedOfIntDoubleData(benchmark::State &state) {
+    for (auto _: state) {
+        int64_t n = state.range(0);
+        std::vector<IntDoubleAlignedData> data(n);
+        for (auto &d: data) {
             d.x = 13;
             d.y = 0.001;
         }
@@ -36,10 +36,11 @@ static void MemoryAlignedOfIntDoubleData(benchmark::State& state) {
     }
 }
 
-static void MemoryUnalignedOfIntDoubleData(benchmark::State& state) {
-    for (auto _ : state) {
-        std::vector<IntDoubleUnalignedData> data(state.range(0));
-        for (auto& d : data) {
+static void MemoryUnalignedOfIntDoubleData(benchmark::State &state) {
+    for (auto _: state) {
+        int64_t n = state.range(0);
+        std::vector<IntDoubleUnalignedData> data(n);
+        for (auto &d: data) {
             d.x = 13;
             d.y = 0.001;
         }
@@ -47,10 +48,10 @@ static void MemoryUnalignedOfIntDoubleData(benchmark::State& state) {
     }
 }
 
-static void MemoryAlignedOfIntCharData(benchmark::State& state) {
-    for (auto _ : state) {
+static void MemoryAlignedOfIntCharData(benchmark::State &state) {
+    for (auto _: state) {
         std::vector<IntCharAlignedData> data(state.range(0));
-        for (auto& d : data) {
+        for (auto &d: data) {
             d.x = 13;
             d.y = 'c';
         }
@@ -58,10 +59,10 @@ static void MemoryAlignedOfIntCharData(benchmark::State& state) {
     }
 }
 
-static void MemoryUnalignedOfIntCharData(benchmark::State& state) {
-    for (auto _ : state) {
+static void MemoryUnalignedOfIntCharData(benchmark::State &state) {
+    for (auto _: state) {
         std::vector<IntCharUnalignedData> data(state.range(0));
-        for (auto& d : data) {
+        for (auto &d: data) {
             d.x = 13;
             d.y = 'c';
         }
