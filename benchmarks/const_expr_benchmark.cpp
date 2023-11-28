@@ -13,7 +13,11 @@ int64_t Cube(int64_t x) {
 
 static void CubeWithConstexpr(benchmark::State &state) {
     for (auto _: state) {
-        int64_t result = CubeConstexpr(state.range(0));
+        int64_t n = state.range(0);
+        int64_t result = 0;
+        for (int i = 0; i < n; ++i) {
+            result += CubeConstexpr(3);
+        }
         benchmark::DoNotOptimize(result);
     }
 }
@@ -21,10 +25,14 @@ static void CubeWithConstexpr(benchmark::State &state) {
 
 static void CubeWithoutConstexpr(benchmark::State &state) {
     for (auto _: state) {
-        int64_t result = Cube(state.range(0));
+        int64_t n = state.range(0);
+        int64_t result = 0;
+        for (int i = 0; i < n; ++i) {
+            result += Cube(3);
+        }
         benchmark::DoNotOptimize(result);
     }
 }
 
-BENCHMARK(CubeWithConstexpr)->Arg(1005);
-BENCHMARK(CubeWithoutConstexpr)->Arg(1005);
+BENCHMARK(CubeWithConstexpr)->Arg(10000);
+BENCHMARK(CubeWithoutConstexpr)->Arg(10000);
